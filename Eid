@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بطاقة تهنئة</title>
+    <style>
+        /* تحسين تنسيق الصفحة */
+        body {
+            font-family: 'Cairo', sans-serif;
+            text-align: center;
+            background: #f7f7f7;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* تحسين تصميم البطاقة وجعلها متجاوبة */
+        #card {
+            position: relative;
+            width: 90vw;  /* ضبط العرض */
+            max-width: 600px; /* الحد الأقصى للعرض */
+            height: auto;
+            aspect-ratio: 1 / 1; /* يحافظ على نسبة الأبعاد */
+            margin: 20px auto;
+            background: url(https://i.imghippo.com/files/Cvfh7825YY.jpg) no-repeat center/cover;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* تحسين عرض النص داخل البطاقة */
+        #nameDisplay {
+            position: absolute;
+            top: 85%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5vw; /* حجم ديناميكي */
+            max-font-size: 48px; /* الحد الأقصى للحجم */
+            color: #fff;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+        }
+
+        /* تحسين تنسيق المدخلات والأزرار */
+        input, button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>اكتب اسمك لتخصيص بطاقة التهنئة</h1>
+    <input type="text" id="nameInput" placeholder="أدخل اسمك هنا">
+    <button onclick="generateCard()">عرض التهنئة</button>
+    <button onclick="downloadCard()">تحميل التهنئة</button>
+
+    <div id="card">
+        <div id="nameDisplay">اسمك هنا</div>
+    </div>
+
+    <script>
+        function generateCard() {
+            const name = document.getElementById('nameInput').value || 'ضيفنا العزيز';
+            document.getElementById('nameDisplay').innerText = name;
+        }
+
+        function downloadCard() {
+            html2canvas(document.querySelector("#card"), {
+                useCORS: true,
+                scale: 3 // تحسين الجودة
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'greeting_card.png';
+                link.href = canvas.toDataURL("image/png");
+                link.click();
+            });
+        }
+    </script>
+
+    <!-- تحميل مكتبة html2canvas لالتقاط صورة من البطاقة -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</body>
+
+</html>
