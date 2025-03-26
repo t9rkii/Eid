@@ -27,7 +27,7 @@
             height: auto;
             aspect-ratio: 1 / 1; /* يحافظ على نسبة الأبعاد */
             margin: 20px auto;
-            background: url(https://i.imghippo.com/files/Cvfh7825YY.jpg) no-repeat center/cover;
+            background: url(https://drive.usercontent.google.com/download?id=1Edu3pEJLs96N_lAnkek29liN84SCPr3R&export=view) no-repeat center/cover;
             border-radius: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
